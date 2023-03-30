@@ -1,0 +1,283 @@
+/* --------
+    fonts  
+  ------ */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+
+/* ----------------
+      Root variables  
+   ------------------ */
+
+:root {
+    --main-color: #E87b1c;
+    --secondary-color: #1c89e8;
+    --main-text-color:#707375;
+    --dark-text-color:#181D20;
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --black:#181D20;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+
+    --lt-shadowDefault: 0 2px 6px -1px rgba(0, 0, 0, 0.16), 0 1px 4px -1px rgba(0, 0, 0, 0.04);
+    --lt-shadowActive: 0 0 8px -2px rgba(0, 0, 0, 0.1), 0 6px 20px -3px rgba(0, 0, 0, 0.2);
+    --lt-shadow-website-overlay: 0 0 7px 0 rgba(0, 0, 0, 0.3) !important;
+
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+
+
+/* ------------------
+      Globals settings  
+   ------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
+*::selection {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+*::-webkit-scrollbar {
+    height: .5rem;
+    width: .5rem;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--gray);
+}
+
+/* ------------------------------------------------------ */
+
+body {
+    background-color: var(--light);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.gray {
+    color: #707375 !important;
+    }
+.strong-gray {
+    color: #181D20 !important;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+.disabled {
+    user-select: none;
+    pointer-events: none;
+    opacity: .5;
+}
+.margin-extra{
+    margin-top: 7rem;
+}
+.blue-color {
+    background-color: var(--blue);
+}
+.red-color {
+    background-color: var(--red);
+}
+.green-color {
+    background-color: var(--green);
+}
+.orange-color {
+    background-color: var(--orange);
+}
+.yellow-color {
+    background-color: var(--yellow);
+}
+.pink-color {
+    background-color: var(--pink);
+}
+.purple-color {
+    background-color: var(--purple);
+}
+.cyan-color {
+    background-color: var(--cyan);
+}
+.teal-color {
+    background-color: var(--teal);
+}
+.indigo-color {
+    background-color: var(--indigo);
+}
+
+
+
+/* ------------------
+      Messages PHP  
+   ------------------- */
+.message {
+    position: sticky;
+    top: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--light);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    z-index: 10000;
+}
+
+.message span {
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.message i {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--red);
+}
+
+.message i:hover {
+    color: var(--black);
+}
+
+.empty {
+    padding: 1.5rem;
+    background: var(--white);
+    color: var(--red);
+    border-radius: .5rem;
+    border: 1px solid var(--black);
+    font-size: 2rem;
+    text-align: center;
+    box-shadow: var(--lt-shadowDefault);
+}
+
+
+/* -------------
+      Animations 
+  ------------- */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translate(0, -50px);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(0, 50px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomInOut {
+
+    0%,
+    100% {
+        transform: scale(0.5);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceTop {
+
+    0%,
+    100% {
+        transform: translateY(-50px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
