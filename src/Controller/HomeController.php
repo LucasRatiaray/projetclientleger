@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Model\User;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController
@@ -10,7 +9,7 @@ class HomeController
     public function index()
     {
         // render a template
-        $view = new ViewGenerator('home');
+        $view = new ViewGenerator(['view' => 'home', 'title' => 'Accueil']);
         return new Response($view->generate());
     }
 }
