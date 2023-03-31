@@ -1,3 +1,3 @@
 <?php foreach ($users as $user):?>
-    <h1><?= $user["name"] ?></h1>
+    <h1>Nom d'utilisateur : <?= $user["username"] ?></h1>
 <?php endforeach; ?>

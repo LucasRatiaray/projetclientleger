@@ -15,7 +15,7 @@ function path($path)
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Title -->
-        <title> pcl - <?= $title ?> </title>
+        <title> Pcl - <?= $title ?> </title>
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="<?= publicFolder("images/fox.png") ?>" type="image/x-icon">
