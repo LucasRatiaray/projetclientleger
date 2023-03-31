@@ -14,10 +14,10 @@ class ViewGenerator
     private $params;
 
 
-    public function __construct($action)
+    public function __construct(array $content)
     {
-        $this->viewName = __DIR__ . '/../view/' . $action . ".php"; // ex: HomeView.php
-        $this->title = ucfirst($action);
+        $this->viewName = __DIR__ . '/../view/' . $content['view'] . ".php"; // ex: HomeView.php
+        $this->title = ucfirst($content['title']); // ex: Home
     }
 
 
@@ -39,7 +39,7 @@ class ViewGenerator
                 array('title' => $this->title, 'body' => $body)
             );
         } else {
-            $body = $this->loadFile($this->viewName);
+            $body = $this->loadFile($this->viewName , $this->getParam());
 
             // generate template with specific part of the view
             $vue = $this->loadFile(
