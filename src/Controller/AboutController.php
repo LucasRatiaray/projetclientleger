@@ -14,7 +14,7 @@ class AboutController
 
 
         // render a template
-        $view = new ViewGenerator('about');
+        $view = new ViewGenerator(['view' => 'about', 'title' => 'A propos']);
         return new Response($view->generate(['users' => $user->getUsers()]));
     }
 }

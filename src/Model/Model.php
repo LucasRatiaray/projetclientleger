@@ -2,18 +2,37 @@
 
 namespace App\model;
 
+use Dotenv\Dotenv;
+
+/**
+ * Class Model
+ * @package App\model
+ */
 abstract class Model
 {
     // connection parameters
 
-    private $host = "localhost";
-    private $username = "root";
-    private $password = "root";
-    private $dbname = "cmbz_db";
-
-
+    private $host;
+    private $username;
+    private $password;
+    private $dbname;
 
     private static $instance = null;  // connection instance
+
+    /**
+     * Model constructor.
+     */
+    public function __construct() {
+        // acceder au fichier .env
+        $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+        $dotenv->load();
+
+        // recuperer les variables d'environnement
+        $this->host = $_ENV['DB_HOST'];
+        $this->username = $_ENV['DB_USER'];
+        $this->password = $_ENV['DB_PASSWORD'];
+        $this->dbname = $_ENV['DB_NAME'];
+    }
 
     /**
       * make a connection to the database and return only one instance (singleton)

@@ -2,11 +2,11 @@
 
 namespace App\Model;
 
-class User extends Model
+class Annonce extends Model
 {
-    public function getUsers()
+    public function getProduct()
     {
-        $sql = 'SELECT * FROM users';
+        $sql = 'SELECT * FROM ad';
         $users = $this->executeQuery($sql);
         return $users;
     }

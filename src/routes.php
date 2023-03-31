@@ -26,6 +26,7 @@ function addNewRoute(
     }
     # add the new route to the collection
     $routes->add($name, $newRoute);
+    
 }
 
 
@@ -33,11 +34,11 @@ function addNewRoute(
 // ====================  create new routes using the function ===============
 
 $routes = new RouteCollection();
-addNewRoute($routes, 'hello', '/hello/{name}', 'App\Controller\HelloController::index', ["name" => "word"]);
+addNewRoute($routes, 'hello', '/hello/{name}', 'App\Controller\HelloController::index', ['name' => 'World']);
 addNewRoute($routes, 'about', '/a-propos', 'App\Controller\AboutController::index');
 addNewRoute($routes, 'home', '/accueil', 'App\Controller\HomeController::index');
 addNewRoute($routes, 'main', '/', 'App\Controller\HomeController::index');
-
+addNewRoute($routes, 'product', '/annonce', 'App\Controller\AdController::index');
 
 
 
