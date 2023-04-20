@@ -10,28 +10,28 @@ use Symfony\Component\Routing\RequestContext;
 
 require_once dirname(__DIR__).'/vendor/autoload.php';
 
-$request = Request::createFromGlobals();  # all data sent `by a user`
+$request = Request::createFromGlobals();
 
+$routes = include dirname(__DIR__) . '/src/Routes.php';
 
-$routes = include dirname(__DIR__) . '/src/routes.php';  # all routes : 1 route = 1 page
-
-
-$context = new RequestContext();  # all request data (url, method, etc...)
+$context = new RequestContext();
 $context->fromRequest($request);
 
-$matcher = new UrlMatcher($routes, $context); # checker if the route exist in the collection
+$matcher = new UrlMatcher($routes, $context);
 $controllerResolver = new ControllerResolver();
 $argumentResolver = new ArgumentResolver();
 
+// On essaie de faire correspondre l'URL demandée à une route
 try {
-    $request->attributes->add($matcher->match($request->getPathInfo()));  # Add the route parameters to the request
+    $request->attributes->add($matcher->match($request->getPathInfo()));
 
-    $controller = $controllerResolver->getController($request);  # ex: [App\Controller\HelloController, 'hello']
-    $arguments = $argumentResolver->getArguments($request, $controller);  # ex: [Request $request]
+    $controller = $controllerResolver->getController($request);
+    $arguments = $argumentResolver->getArguments($request, $controller);
 
-    $response = call_user_func_array($controller, $arguments);  # Execute the function (controller) of the route with the arguments
+    $response = call_user_func_array($controller, $arguments);
+
 } catch(ResourceNotFoundException $e) {
-    $response = new Response('page non trouvé', 404);
+    $response = new Response('Page non trouvé', 404);
 } catch(Exception $e) {
     $response = new Response("Une erreur est subvenue (".$e->getMessage()." )", 500);
 }

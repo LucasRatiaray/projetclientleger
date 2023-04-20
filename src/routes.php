@@ -3,44 +3,32 @@
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
-# define a function to add new routes
+/**
+ * Ajoute une nouvelle route à la collection de routes existante
+ * @param RouteCollection $routes
+ * @param string $name
+ * @param string $routePattern
+ * @param string $controller
+ */
 function addNewRoute(
-    RouteCollection $routes,
-    string $name,
-    string $routePattern,
-    string $controller,
-    array $paramDefault = null
+    RouteCollection $routes,  # La collection de routes existante à laquelle ajouter la nouvelle route
+    string $name,            # Le nom de la nouvelle route
+    string $routePattern,    # Le motif d'URL pour la nouvelle route
+    string $controller,      # Le contrôleur qui sera appelé lorsque la nouvelle route est atteinte
 ) {
-    if ($paramDefault == null) {
-        # create a new instance of Route class with given parameters
-        $newRoute = new Route($routePattern, [
-            '_controller' => $controller
-        ]);
-    } else {
-        $k = array_keys($paramDefault);
-        $v = array_values($paramDefault);
-        $newRoute = new Route($routePattern, [
-            $k[0] => $v[0],
-            '_controller' => $controller
-        ]);
-    }
-    # add the new route to the collection
+    $newRoute = new Route($routePattern, [
+        '_controller' => $controller
+    ]);
     $routes->add($name, $newRoute);
-    
 }
 
 
-
-// ====================  create new routes using the function ===============
-
 $routes = new RouteCollection();
-addNewRoute($routes, 'hello', '/hello/{name}', 'App\Controller\HelloController::index', ['name' => 'World']);
-addNewRoute($routes, 'about', '/a-propos', 'App\Controller\AboutController::index');
-addNewRoute($routes, 'home', '/accueil', 'App\Controller\HomeController::index');
-addNewRoute($routes, 'main', '/', 'App\Controller\HomeController::index');
-addNewRoute($routes, 'product', '/annonce', 'App\Controller\AdController::index');
 
+# Toutes les routes de l'application sont définies ici
+addNewRoute($routes, 'accueil', '/', 'App\Controller\HomeController::index');
+addNewRoute($routes, 'annonces', '/annonces', 'App\Controller\AdsController::index');
+addNewRoute($routes, 'connexion', '/connexion', 'App\Controller\LoginController::index');
+addNewRoute($routes, 'creation_de_compte', '/creation_de_compte', 'App\Controller\SignupController::index');
 
-
-// return the RouteCollection
 return $routes;

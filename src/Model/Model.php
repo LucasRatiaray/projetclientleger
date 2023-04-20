@@ -8,10 +8,9 @@ use Dotenv\Dotenv;
  * Class Model
  * @package App\model
  */
-abstract class Model
+class Model
 {
-    // connection parameters
-
+    // Paramètres de connexion à la base de données
     private $host;
     private $username;
     private $password;
@@ -35,10 +34,10 @@ abstract class Model
     }
 
     /**
-      * make a connection to the database and return only one instance (singleton)
-      *
-      * @return mixed
-      */
+     * Obtenir une instance de connexion à la base de données
+     *
+     * @return \PDO
+     */
     private function getDb()
     {
         if (self::$instance === null) {
@@ -69,6 +68,7 @@ abstract class Model
      * @param  array $params parameters for inclusion in the query
      * @return ?array|bool result of the query
      */
+    /*
       protected function executeQuery($sql, $params = null)
       {
           if ($params == null) {
@@ -79,4 +79,5 @@ abstract class Model
           }
           return $result;
       }
+      */
 }

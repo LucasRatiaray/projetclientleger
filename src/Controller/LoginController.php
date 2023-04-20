@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-class HomeController
+class LoginController
 {
     private $twig;
 
@@ -20,10 +20,10 @@ class HomeController
         $this->twig = new \Twig\Environment($loader);
     }
 
-    #[Route('/', name: 'accueil')]
+    #[Route('/connexion', name: 'connexion')]
     public function index(): Response
     {
-        $html = $this->twig->render('home/index.html.twig');
+        $html = $this->twig->render('security/login.html.twig');
         
         return new Response($html);
     }

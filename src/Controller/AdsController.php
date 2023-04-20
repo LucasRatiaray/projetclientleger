@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
+use App\model\Model;
+use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Twig\Environment;
 
-class HomeController
+class AdsController
 {
     private $twig;
 
     /**
-     * HomeController constructor.
+     * AdsController constructor.
      * @param Environment $twig
      */
     public function __construct()
@@ -20,10 +21,15 @@ class HomeController
         $this->twig = new \Twig\Environment($loader);
     }
 
-    #[Route('/', name: 'accueil')]
+    #[Route('/annonces', name: 'annonces')]
     public function index(): Response
     {
-        $html = $this->twig->render('home/index.html.twig');
+        /*$model = new Model();
+        $ad = $model->getAds();*/
+
+        $html = $this->twig->render('ads/index.html.twig', [
+            /*'users' => $users*/
+        ]);
         
         return new Response($html);
     }

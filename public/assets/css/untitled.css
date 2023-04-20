@@ -1,0 +1,29 @@
+.footer-items {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.trait:after {
+  content: "";
+  display: block;
+  width: 30%;
+  height: 2px;
+  background-color: var(--bs-primary);
+  margin-top: -5px;
+}
+
+.trait {
+  font-size: 1.5rem;
+}
+
+.bs-icon-sm.bs-icon-circle.bs-icon-primary.bs-icon.icon-footer {
+  color: var(--bs-primary);
+  background-color: white;
+}
+
+.trait.trait-footer:after {
+  background-color: white;
+}
+
